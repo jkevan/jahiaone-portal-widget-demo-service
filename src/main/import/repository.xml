@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content xmlns:j="http://www.jahia.org/jahia/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0">
+    <modules jcr:primaryType="jnt:modules">
+        <jahiaone-portal-widget-demo-serv j:dependencies="default portal-user-portal portal-widgets"
+                                        j:modulePriority="0"
+                                        j:moduleType="module"
+                                        j:title="jahiaone portal widget demo services"
+                                        jcr:primaryType="jnt:module">
+                
+                <portlets jcr:primaryType="jnt:portletFolder"/>
+                <files jcr:primaryType="jnt:folder"/>
+                <contents jcr:primaryType="jnt:contentFolder">
+                    <messages jcr:primaryType="jonent:messages"/>
+                </contents>
+                <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
+                    <files jcr:primaryType="jnt:folder"/>
+                    <contents jcr:primaryType="jnt:contentFolder"/>
+                </templates>
+                
+            </jahiaone-portal-widget-demo-serv>
+    </modules>
+</content>

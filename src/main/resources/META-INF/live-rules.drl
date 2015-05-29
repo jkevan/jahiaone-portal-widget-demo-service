@@ -1,0 +1,22 @@
+package org.jahia.modules.portal.rules
+
+// list any import classes here.
+import org.jahia.services.content.rules.*
+import org.jahia.services.content.JCRContentUtils
+import org.slf4j.Logger
+
+expander rules.dsl
+
+// declare any global variables here
+global User user
+global Service service
+global Logger logger
+global JCRContentUtils jcrUtils
+
+rule "Set portal tab public"
+  when
+    A new node is created
+                - the node has the type jonent:channel
+  then
+    Grant role editor on the node to the group users
+end

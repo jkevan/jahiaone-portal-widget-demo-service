@@ -1,0 +1,23 @@
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+<jmix = 'http://www.jahia.org/jahia/mix/1.0'>
+
+//---------------------------------------------------------
+// Context init component
+//---------------------------------------------------------
+
+[jonent:context] > jmix:portalComponentContent, jmix:studioOnly, jnt:content, jmix:portalContextWatcher, mix:title
+
+//---------------------------------------------------------
+// Messages core types
+//---------------------------------------------------------
+
+[jonent:messages] > jmix:portalComponentContent, jmix:autoPublish, jnt:content
+ + * (jonent:channel)
+
+[jonent:channel] > nt:base
+ + * (jonent:message)
+
+[jonent:message] > nt:base
+ - author (string)
+ - body (string, richtext)
+ - created (string)
