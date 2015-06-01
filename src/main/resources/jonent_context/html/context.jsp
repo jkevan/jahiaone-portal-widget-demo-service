@@ -16,7 +16,6 @@
 
 <template:addResources type="javascript" resources="angular.min.js"/>
 <template:addResources type="javascript" resources="underscore.js"/>
-<template:addResources type="javascript" resources="messages-services-app.js"/>
 
 <jcr:node var="rootNode" path="/sites/${portalContext.siteKey}/contents/messages"/>
 <c:set var="rootNodeId" value="${rootNode.identifier}"/>
@@ -95,18 +94,25 @@
                     });
                 };
 
-                this.updateWidget = function (widget, channel) {
+                this.updateWidget = function (widget) {
                     var instance = this;
-                    if(instance.channels[channel]){
-                        widget.performUpdate($("#" + widget._id + " form").serializeArray(), function (data) {
-                            widget.load();
-                        });
-                    } else {
-                        instance.createChannel(channel, function(){
-                            widget.performUpdate($("#" + widget._id + " form").serializeArray(), function (data) {
-                                widget.load();
-                            });
-                        })
+                    var serializedForm = $("#" + widget._id + " form").serializeArray();
+                    var indexedForm = _.indexBy(serializedForm, 'name')["channelName"];
+                    if(indexedForm) {
+                        var channel = indexedForm.value;
+                        if (channel) {
+                            if(instance.channels[channel]){
+                                widget.performUpdate(serializedForm, function (data) {
+                                    widget.load();
+                                });
+                            } else {
+                                instance.createChannel(channel, function(){
+                                    widget.performUpdate(serializedForm, function (data) {
+                                        widget.load();
+                                    });
+                                })
+                            }
+                        }
                     }
                 };
 
