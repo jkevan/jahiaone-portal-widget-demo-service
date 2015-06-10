@@ -97,7 +97,7 @@
                 this.updateWidget = function (widget) {
                     var instance = this;
                     var serializedForm = $("#" + widget._id + " form").serializeArray();
-                    var indexedForm = _.indexBy(serializedForm, 'name')["channelName"];
+                    var indexedForm = _.indexBy(serializedForm, 'name')["room"];
                     if(indexedForm) {
                         var channel = indexedForm.value;
                         if (channel) {
@@ -126,11 +126,11 @@
                     scope: {
                         widgetData: '=widgetInjector',
                         widget: '=widget',
-                        channel: '=channel'
+                        room: '=room'
                     },
                     controller: function ($scope) {
                         $scope.widget = portal.getCurrentWidget($scope.widgetData.widgetId);
-                        $scope.channel = $scope.widgetData.channel;
+                        $scope.room = $scope.widgetData.room;
                     }
                 }
             }]);
